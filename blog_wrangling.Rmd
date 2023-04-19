@@ -1,0 +1,40 @@
+---
+title: 'Wrangled Datasets for PUG Shiny Project: SAMHSA Database'
+author: "Lucas Bernstein"
+date: "March 23, 2023"
+---
+
+```{r, setup, include=FALSE}
+knitr::opts_chunk$set(
+  tidy=FALSE,     # display code as typed
+  size="small")   # slightly smaller font for code
+
+# load packages
+library(tidyverse)
+```
+
+# Instructions for Importing Data
+
+In order to load in the `mhcld_puf_2020` dataset (SAMHSA's Mental Health Client Level Data), go to https://www.samhsa.gov/data/data-we-collect/mh-cld-mental-health-client-level-data. Scroll down to the "Public Use Files" section and choose the year 2020. Download the SPSS dataset (since it's the smallest file of the bunch). Then click on "Import Dataset" in your RStudio environment, choose "From SPSS...", and select the downloaded file. Use the default name when importing in order to run the below code.
+
+```{r}
+#wrangling for choropleth - observing comorbidities between mental health diagnoses across US states
+mhcld_comorbidity <- mhcld_puf_2020 %>%
+#keep only relevant age groups (12-24) and those with at least one diagnosis
+  filter(AGE < 6, AGE > 2, MH1 > 0) %>%
+#select variables related to diagnoses
+  select(MH1, MH2, MH3, STATEFIP) %>%
+#recode cases for labeling
+  mutate(MH1 = cut(MH1, breaks = c(-10, .5, 1.5, 2.5, 3.5, 4.5, 5.5, 6.5, 7.5, 8.5, 9.5, 10.5, 11.5, 12.5, 13.5),
+    labels = c("Missing/no diagnosis", "Trauma- and stressor-related disorders", "Anxiety disorders", "Attention deficit/hyperactivity disorder (ADHD)", "Conduct disorders", "Delirium, dementia", "Bipolar disorders", "Depressive disorders", "Oppositional defiant disorders ", "Pervasive developmental disorders", "Personality disorders", "Schizophrenia or other psychotic disorders", "Alcohol or substance use disorders", "Other disorders/conditions"), include.lowest = TRUE), 
+    MH2 = cut(MH2, breaks = c(-10, .5, 1.5, 2.5, 3.5, 4.5, 5.5, 6.5, 7.5, 8.5, 9.5, 10.5, 11.5, 12.5, 13.5),
+    labels = c("Missing/no diagnosis", "Trauma- and stressor-related disorders", "Anxiety disorders", "Attention deficit/hyperactivity disorder (ADHD)", "Conduct disorders", "Delirium, dementia", "Bipolar disorders", "Depressive disorders", "Oppositional defiant disorders ", "Pervasive developmental disorders", "Personality disorders", "Schizophrenia or other psychotic disorders", "Alcohol or substance use disorders", "Other disorders/conditions"), include.lowest = TRUE),
+    MH3 = cut(MH3, breaks = c(-10, .5, 1.5, 2.5, 3.5, 4.5, 5.5, 6.5, 7.5, 8.5, 9.5, 10.5, 11.5, 12.5, 13.5),
+    labels = c("Missing/no diagnosis", "Trauma- and stressor-related disorders", "Anxiety disorders", "Attention deficit/hyperactivity disorder (ADHD)", "Conduct disorders", "Delirium, dementia", "Bipolar disorders", "Depressive disorders", "Oppositional defiant disorders ", "Pervasive developmental disorders", "Personality disorders", "Schizophrenia or other psychotic disorders", "Alcohol or substance use disorders", "Other disorders/conditions"), include.lowest = TRUE), 
+    STATE = recode(STATEFIP, 1 = "alabama", 2 = "alaska"))
+```
+
+```{r}
+#save wrangled datasets as csv
+write_csv(mhcld_comorbidity, "data/samhsa_comorbidity.csv")
+```
