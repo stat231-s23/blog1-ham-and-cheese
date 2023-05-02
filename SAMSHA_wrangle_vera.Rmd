@@ -1,0 +1,61 @@
+---
+title: "Wrangling on SAMSHA - Vera"
+output: html_document
+date: "April 20 2023"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  tidy=FALSE,     # display code as typed
+  size="small")   # slightly smaller font for code
+
+# load packages
+library(tidyverse)
+```
+
+## R Markdown
+
+
+
+```{r}
+mhcld_tab_charts <- mhcld_puf_2020 %>%
+  
+  filter(AGE > 1, MH1 > 0) %>%
+  
+  select(SPHSERVICE, CMPSERVICE, OPISERVICE, RTCSERVICE, IJSSERVICE, EMPLOY, EDUC, GENDER) %>%
+  
+  mutate(GENDER = cut(GENDER, breaks = c(-10, .5, 1.5, 2.5),
+                         labels = c("Missing/no diagnosis", "Male", "Female"), include.lowest = TRUE),
+    
+    SPHSERVICE = cut(SPHSERVICE, breaks = c(.5, 1.5, 2.5),
+                         labels = c("Served in a state psychiatric hospital", "Not served in a state psychiatric hospital"), include.lowest = TRUE),
+    
+    CMPSERVICE = cut(CMPSERVICE, breaks = c(.5, 1.5, 2.5),
+                         labels = c("Served in a SMHA-funded/operated community-based program", "Not served in a SMHA-funded/operated community-based program"), include.lowest = TRUE),
+    
+    OPISERVICE = cut(OPISERVICE, breaks = c(.5, 1.5, 2.5),
+                         labels = c("Served in 'other psychiatric inpatient center", "Not served in 'other psychiatric inpatient center'"), include.lowest = TRUE),
+    
+    RTCSERVICE = cut(RTCSERVICE, breaks = c(.5, 1.5, 2.5),
+                         labels = c("Served in a residential treatment center", "Not served in a residential treatment center"), include.lowest = TRUE),
+    
+    IJSSERVICE = cut(IJSSERVICE, breaks = c(.5, 1.5, 2.5),
+                         labels = c("Served by an institution under the justice system", "Not served by any institution under the justice system"), include.lowest = TRUE),
+    
+    EMPLOY = cut(EMPLOY, breaks = c(-10, .5, 1.5, 2.5, 3.5, 4.5, 5.5),
+                         labels = c("Missing/no data", "Full-time", "Part-time", "Employed full-time/part-time not differentiated", "Unemployed", "Not in labor force"), include.lowest = TRUE),
+    
+    EDUC = cut(EDUC, breaks = c(-10, .5, 1.5, 2.5, 3.5, 4.5, 5.5),
+                         labels = c("Missing/no data", "Special education", "0 to 8", "9 to 11", "12 or GED", "More than 12"), include.lowest = TRUE))
+
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
