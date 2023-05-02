@@ -11,6 +11,8 @@ knitr::opts_chunk$set(
 
 # load packages
 library(tidyverse)
+library(sf)
+library(viridis)
 ```
 
 # Instructions for Importing Data
@@ -21,7 +23,7 @@ In order to load in the `mhcld_puf_2020` dataset (SAMHSA's Mental Health Client 
 #wrangling for choropleth - observing comorbidities between mental health diagnoses across US states
 mhcld_comorbidity <- mhcld_puf_2020 %>%
 #keep only relevant age groups (12-24) and those with at least one diagnosis
-  filter(AGE < 6, AGE > 2, MH1 > 0) %>%
+  filter(AGE > 2, MH1 > 0) %>%
 #select variables related to diagnoses
   select(MH1, MH2, MH3, STATEFIP) %>%
 #recode cases for labeling
@@ -85,4 +87,33 @@ mhcld_comorbidity <- mhcld_puf_2020 %>%
 ```{r}
 #save wrangled datasets as csv
 write_csv(mhcld_comorbidity, "data/samhsa_comorbidity.csv")
+```
+
+```{r}
+#comorbidity choropleth setup - read in csv and prep/join US map
+samhsa_comorbidity <- read_csv("data/samhsa_comorbidity.csv")
+us_map <- maps::map("state", plot = FALSE, fill = TRUE) %>%
+  st_as_sf()
+
+samhsa_states <- samhsa_comorbidity %>%
+  group_by(STATE) %>%
+  summarize(count = n(), comorb_count = sum(MH2 != "Missing/no diagnosis"), comorb_percent = comorb_count / count) %>%
+  right_join(us_map, by = c("STATE" = "ID"))
+```
+
+```{r}
+#choropleth coding
+samhsa_condition <- samhsa_comorbidity %>%
+  filter(MH1 == "Depressive disorders") %>%
+  group_by(STATE) %>%
+  summarize(count = n(), comorb_count = sum(MH2 != "Missing/no diagnosis"), comorb_percent = comorb_count / count) %>%
+  right_join(us_map, by = c("STATE" = "ID"))
+
+ggplot(samhsa_condition, aes(geometry=geom, fill = comorb_percent)) +
+  geom_sf() +
+  theme_void() +
+  labs(fill = "% with additional diagnosis"
+       , title = "Comorbidity of Mental Health Diagnoses"
+       , caption = "Source: SAMHSA Mental Health Client Level Data, 2020") +
+  scale_fill_viridis(option = "magma", direction = -1)
 ```
