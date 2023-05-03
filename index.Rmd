@@ -76,8 +76,8 @@ You may embed a published Shiny app in your blog if useful, but be aware that th
 
 Any Shiny apps embedded in your blog should be accompanied by the link to the published Shiny app (I did this using a figure caption in the code chunk below, but you don't have to incorporate the link in this way).
 
-```{r ds-salaries-app, out.width = "100%", out.extra = 'data-external="1" frameborder="no"', fig.cap = "[Data Science Salaries Shiny App](https://bebailey.shinyapps.io/data-science-salaries)"}
-knitr::include_app("https://bebailey.shinyapps.io/data-science-salaries",
+```{r ds-salaries-app, out.width = "100%", out.extra = 'data-external="1" frameborder="no"', fig.cap = "[Mental Health Comorbidities Shiny App](https://lucasbernstein.shinyapps.io/pug_blog_comorbidity/)"}
+knitr::include_app("https://lucasbernstein.shinyapps.io/pug_blog_comorbidity/",
                    height = "500px")
 ```
 
