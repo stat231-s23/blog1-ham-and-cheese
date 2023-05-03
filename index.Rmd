@@ -20,6 +20,23 @@ library(tidyverse)
 
 ```
 
+#Our Data
+
+
+
+#Mental Health Comorbidities by State
+
+
+
+```{r ds-salaries-app, out.width = "100%", out.extra = 'data-external="1" frameborder="no"', fig.cap = "[Mental Health Comorbidities Shiny App](https://lucasbernstein.shinyapps.io/pug_blog_comorbidity/)"}
+knitr::include_app("https://lucasbernstein.shinyapps.io/pug_blog_comorbidity/",
+                   height = "500px")
+```
+
+
+
+
+
 # Intro
 
 This is an R Markdown blog template. This document will be knit to HTML to produce a webpage that will be hosted publicly via GitHub.
