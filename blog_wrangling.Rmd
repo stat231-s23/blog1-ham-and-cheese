@@ -21,9 +21,139 @@ In order to load in the `mhcld_puf_2020` dataset (SAMHSA's Mental Health Client 
 
 ```{r}
 #wrangling for choropleth - observing comorbidities between mental health diagnoses across US states
-mhcld_comorbidity <- mhcld_puf_2020 %>%
+mhcld_comorbidity_18_24 <- mhcld_puf_2020 %>%
 #keep only relevant age groups (12-24) and those with at least one diagnosis
-  filter(AGE > 2, MH1 > 0) %>%
+  filter(AGE > 3, AGE < 6, MH1 > 0) %>%
+#select variables related to diagnoses
+  select(MH1, MH2, MH3, STATEFIP) %>%
+#recode cases for labeling
+  mutate(MH1 = cut(MH1, breaks = c(-10, .5, 1.5, 2.5, 3.5, 4.5, 5.5, 6.5, 7.5, 8.5, 9.5, 10.5, 11.5, 12.5, 13.5),
+    labels = c("Missing/no diagnosis", "Trauma- and stressor-related disorders", "Anxiety disorders", "Attention deficit/hyperactivity disorder (ADHD)", "Conduct disorders", "Delirium, dementia", "Bipolar disorders", "Depressive disorders", "Oppositional defiant disorders ", "Pervasive developmental disorders", "Personality disorders", "Schizophrenia or other psychotic disorders", "Alcohol or substance use disorders", "Other disorders/conditions"), include.lowest = TRUE), 
+    MH2 = cut(MH2, breaks = c(-10, .5, 1.5, 2.5, 3.5, 4.5, 5.5, 6.5, 7.5, 8.5, 9.5, 10.5, 11.5, 12.5, 13.5),
+    labels = c("Missing/no diagnosis", "Trauma- and stressor-related disorders", "Anxiety disorders", "Attention deficit/hyperactivity disorder (ADHD)", "Conduct disorders", "Delirium, dementia", "Bipolar disorders", "Depressive disorders", "Oppositional defiant disorders ", "Pervasive developmental disorders", "Personality disorders", "Schizophrenia or other psychotic disorders", "Alcohol or substance use disorders", "Other disorders/conditions"), include.lowest = TRUE),
+    MH3 = cut(MH3, breaks = c(-10, .5, 1.5, 2.5, 3.5, 4.5, 5.5, 6.5, 7.5, 8.5, 9.5, 10.5, 11.5, 12.5, 13.5),
+    labels = c("Missing/no diagnosis", "Trauma- and stressor-related disorders", "Anxiety disorders", "Attention deficit/hyperactivity disorder (ADHD)", "Conduct disorders", "Delirium, dementia", "Bipolar disorders", "Depressive disorders", "Oppositional defiant disorders ", "Pervasive developmental disorders", "Personality disorders", "Schizophrenia or other psychotic disorders", "Alcohol or substance use disorders", "Other disorders/conditions"), include.lowest = TRUE),
+    STATE = recode(as.numeric(STATEFIP), `1` = "alabama", 
+`2` = "alaska", 
+`4` = "arizona", 
+`5` = "arkansas", 
+`6` = "california", 
+`8` = "colorado", 
+`9` = "connecticut", 
+`10` = "delaware", 
+`11` = "district of columbia", 
+`12` = "florida", 
+`13` = "georgia", 
+`15` = "hawaii", 
+`16` = "idaho", 
+`17` = "illinois", 
+`18` = "indiana", 
+`19` = "iowa", 
+`20` = "kansas", 
+`21` = "kentucky", 
+`22` = "louisiana", 
+`25` = "massachusetts", 
+`26` = "michigan", 
+`27` = "minnesota", 
+`28` = "mississippi", 
+`29` = "missouri", 
+`30` = "montana", 
+`31` = "nebraska", 
+`32` = "nevada", 
+`34` = "new jersey", 
+`35` = "new mexico", 
+`36` = "new york", 
+`37` = "north carolina", 
+`38` = "north dakota", 
+`39` = "ohio", 
+`40` = "oklahoma", 
+`41` = "oregon", 
+`42` = "pennsylvania", 
+`44` = "rhode island", 
+`45` = "south carolina", 
+`46` = "south dakota", 
+`47` = "tennessee", 
+`48` = "texas", 
+`49` = "utah", 
+`50` = "vermont", 
+`51` = "virginia", 
+`53` = "washington", 
+`55` = "wisconsin", 
+`56` = "wyoming", 
+`72` = "puerto rico")
+    )
+```
+
+```{r}
+#wrangling for choropleth - observing comorbidities between mental health diagnoses across US states
+mhcld_comorbidity_25_35 <- mhcld_puf_2020 %>%
+#keep only relevant age groups (12-24) and those with at least one diagnosis
+  filter(AGE > 5, AGE < 8, MH1 > 0) %>%
+#select variables related to diagnoses
+  select(MH1, MH2, MH3, STATEFIP) %>%
+#recode cases for labeling
+  mutate(MH1 = cut(MH1, breaks = c(-10, .5, 1.5, 2.5, 3.5, 4.5, 5.5, 6.5, 7.5, 8.5, 9.5, 10.5, 11.5, 12.5, 13.5),
+    labels = c("Missing/no diagnosis", "Trauma- and stressor-related disorders", "Anxiety disorders", "Attention deficit/hyperactivity disorder (ADHD)", "Conduct disorders", "Delirium, dementia", "Bipolar disorders", "Depressive disorders", "Oppositional defiant disorders ", "Pervasive developmental disorders", "Personality disorders", "Schizophrenia or other psychotic disorders", "Alcohol or substance use disorders", "Other disorders/conditions"), include.lowest = TRUE), 
+    MH2 = cut(MH2, breaks = c(-10, .5, 1.5, 2.5, 3.5, 4.5, 5.5, 6.5, 7.5, 8.5, 9.5, 10.5, 11.5, 12.5, 13.5),
+    labels = c("Missing/no diagnosis", "Trauma- and stressor-related disorders", "Anxiety disorders", "Attention deficit/hyperactivity disorder (ADHD)", "Conduct disorders", "Delirium, dementia", "Bipolar disorders", "Depressive disorders", "Oppositional defiant disorders ", "Pervasive developmental disorders", "Personality disorders", "Schizophrenia or other psychotic disorders", "Alcohol or substance use disorders", "Other disorders/conditions"), include.lowest = TRUE),
+    MH3 = cut(MH3, breaks = c(-10, .5, 1.5, 2.5, 3.5, 4.5, 5.5, 6.5, 7.5, 8.5, 9.5, 10.5, 11.5, 12.5, 13.5),
+    labels = c("Missing/no diagnosis", "Trauma- and stressor-related disorders", "Anxiety disorders", "Attention deficit/hyperactivity disorder (ADHD)", "Conduct disorders", "Delirium, dementia", "Bipolar disorders", "Depressive disorders", "Oppositional defiant disorders ", "Pervasive developmental disorders", "Personality disorders", "Schizophrenia or other psychotic disorders", "Alcohol or substance use disorders", "Other disorders/conditions"), include.lowest = TRUE),
+    STATE = recode(as.numeric(STATEFIP), `1` = "alabama", 
+`2` = "alaska", 
+`4` = "arizona", 
+`5` = "arkansas", 
+`6` = "california", 
+`8` = "colorado", 
+`9` = "connecticut", 
+`10` = "delaware", 
+`11` = "district of columbia", 
+`12` = "florida", 
+`13` = "georgia", 
+`15` = "hawaii", 
+`16` = "idaho", 
+`17` = "illinois", 
+`18` = "indiana", 
+`19` = "iowa", 
+`20` = "kansas", 
+`21` = "kentucky", 
+`22` = "louisiana", 
+`25` = "massachusetts", 
+`26` = "michigan", 
+`27` = "minnesota", 
+`28` = "mississippi", 
+`29` = "missouri", 
+`30` = "montana", 
+`31` = "nebraska", 
+`32` = "nevada", 
+`34` = "new jersey", 
+`35` = "new mexico", 
+`36` = "new york", 
+`37` = "north carolina", 
+`38` = "north dakota", 
+`39` = "ohio", 
+`40` = "oklahoma", 
+`41` = "oregon", 
+`42` = "pennsylvania", 
+`44` = "rhode island", 
+`45` = "south carolina", 
+`46` = "south dakota", 
+`47` = "tennessee", 
+`48` = "texas", 
+`49` = "utah", 
+`50` = "vermont", 
+`51` = "virginia", 
+`53` = "washington", 
+`55` = "wisconsin", 
+`56` = "wyoming", 
+`72` = "puerto rico")
+    )
+```
+
+```{r}
+#wrangling for choropleth - observing comorbidities between mental health diagnoses across US states
+mhcld_comorbidity_35_40 <- mhcld_puf_2020 %>%
+#keep only relevant age groups (12-24) and those with at least one diagnosis
+  filter(AGE == 8, MH1 > 0) %>%
 #select variables related to diagnoses
   select(MH1, MH2, MH3, STATEFIP) %>%
 #recode cases for labeling
@@ -86,7 +216,9 @@ mhcld_comorbidity <- mhcld_puf_2020 %>%
 
 ```{r}
 #save wrangled datasets as csv
-write_csv(mhcld_comorbidity, "data/samhsa_comorbidity.csv")
+write_csv(mhcld_comorbidity_18_24, "data/samhsa_comorbidity_18_24.csv")
+write_csv(mhcld_comorbidity_25_35, "data/samhsa_comorbidity_25_35.csv")
+write_csv(mhcld_comorbidity_35_40, "data/samhsa_comorbidity_35_40.csv")
 ```
 
 ```{r}
