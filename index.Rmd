@@ -48,10 +48,26 @@ knitr::include_app("https://lucasbernstein.shinyapps.io/pug_blog_comorbidity/",
 
 Additionally, we created a table (https://vchappell.shinyapps.io/ServicesTable/) observing the different health services used by participants which can be filtered by Gender, Employment Status, and Education level, broken down at a state level.
 
+To help understand this table, the different abbreviated services are as follows :
+
+- SPHSERVICE -> State-psychiatric hospital
+- CMPSERVICE -> SMHA-funded/operated community-based program
+- OPISERVICE -> Other psychiatric inpatient center
+- RTCSERVICE -> Residential treatment center
+- IJSSERVICE -> Institution under the justice system
+
 ```{r services-app, out.width = "100%", out.extra = 'data-external="1" frameborder="no"', fig.cap = "[Mental Health Services Shiny App](https://vchappell.shinyapps.io/ServicesTable/)"}
 knitr::include_app("https://vchappell.shinyapps.io/ServicesTable/",
                    height = "500px")
 ```
+The display of this data will eventually be reformatted to display a proportion of the whole such that results are more easily understood, but some preliminary results are:
+
+* For nearly every state, there is an inverse relationship between those served by residential treatment centers and institutions under the justice system (i.e., if more are served by an IJS, less are served by a RTC and vice-versa.)
+
+* Community-based program services are the most utilized services in each state compared to the other services documented.
+
+* In nearly all states, there is a higher sum of men seen in state-psychiatric hospitals, other psychiatric inpatient centers, and institutions under the justice system than women. 
+
 
 # Intro
 
