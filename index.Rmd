@@ -1,5 +1,5 @@
 ---
-title: "Your Project Title Here"
+title: "A Geographic Exploration of Mental Healthcare"
 author: "Lucas Bernstein, Vera Chappell"
 date: "Add a date"
 output:
@@ -20,20 +20,31 @@ library(tidyverse)
 
 ```
 
-#Our Data
+# Our Topic
+
+For this project, we chose to continue to explore mental health as we did in our Shiny app. However, while our Shiny app focused exclusively on students, we wanted to expand our target population to include all adults ages 18-39. Additionally, our previous project explored how demographic factors such as age, race, and education affected mental health diagnoses and outcomes; while we are still looking at diagnoses and outcomes here, we wanted to see how incorporating spatial data - specifically state-by-state breakdowns - might lead us to additional insights in these areas.  
 
 
+## Our Data
 
-#Mental Health Comorbidities by State
+Our data comes from the Substance Abuse and Mental Health Services Administration's (SAMHSA) Mental Health Client Level Data for 2020. [According to SAMHSA](https://www.samhsa.gov/data/data-we-collect/mh-cld-mental-health-client-level-data), the data "are for individuals receiving mental health treatment services provided or funded through state mental health agencies". Because of this overall population represented in the dataset, we narrowed it down further to only include those who received at least one primary diagnosis from mental healthcare providers (since it is already an unrepresentative sample in that sense), as well as our age range of 18-39.
 
 
+# Exploring the Data
 
-```{r ds-salaries-app, out.width = "100%", out.extra = 'data-external="1" frameborder="no"', fig.cap = "[Mental Health Comorbidities Shiny App](https://lucasbernstein.shinyapps.io/pug_blog_comorbidity/)"}
+## Mental Health Comorbidities by State
+
+To begin, we created [an interactive choropleth](https://lucasbernstein.shinyapps.io/pug_blog_comorbidity/) exploring how often clients who are diagnosed with one condition are also given additional diagnoses, broken down by US state.
+
+```{r comorbidities-app, out.width = "100%", out.extra = 'data-external="1" frameborder="no"', fig.cap = "[Mental Health Comorbidities Shiny App](https://lucasbernstein.shinyapps.io/pug_blog_comorbidity/)"}
 knitr::include_app("https://lucasbernstein.shinyapps.io/pug_blog_comorbidity/",
                    height = "500px")
 ```
 
-
+* Certain states have high comorbidity rates regardless of primary diagnosis (e.g. Minnesota, Washington, Virginia), often approaching 80%; however, these states often have low to average comorbidity rates when the primary diagnosis is delirium/dementia, substance use disorders, or developmental disorders.
+* Some disorders, like depressive, bipolar, and conduct, appear to have higher comorbidity rates nationwide
+* California has a low comorbidity rate across most primary diagnoses even compared to others with similar population. Arkansas' low comorbidity rate is at an even larger extreme (one of the lowest for every primary diagnosis).
+* No real patterns emerge regionally...but could we explore something else to help explain why certain states have higher or lower overall rates of comorbidity?
 
 
 
