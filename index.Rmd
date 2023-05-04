@@ -46,7 +46,12 @@ knitr::include_app("https://lucasbernstein.shinyapps.io/pug_blog_comorbidity/",
 * California has a low comorbidity rate across most primary diagnoses even compared to others with similar population. Arkansas' low comorbidity rate is at an even larger extreme (one of the lowest for every primary diagnosis).
 * No real patterns emerge regionally...but could we explore something else to help explain why certain states have higher or lower overall rates of comorbidity?
 
+Additionally, we created a table (https://vchappell.shinyapps.io/ServicesTable/) observing the different health services used by participants which can be filtered by Gender, Employment Status, and Education level, broken down at a state level.
 
+```{r services-app, out.width = "100%", out.extra = 'data-external="1" frameborder="no"', fig.cap = "[Mental Health Services Shiny App](https://vchappell.shinyapps.io/ServicesTable/)"}
+knitr::include_app("https://vchappell.shinyapps.io/ServicesTable/",
+                   height = "500px")
+```
 
 # Intro
 
