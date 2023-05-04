@@ -1,0 +1,13 @@
+name: pug_blog_comorbidity
+title: pug_blog_comorbidity
+username:
+account: lucasbernstein
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 9022877
+bundleId: 7170875
+url: https://lucasbernstein.shinyapps.io/pug_blog_comorbidity/
+when: 1683147442.45338
+lastSyncTime: 1683147442.45339
+asMultiple: FALSE
+asStatic: FALSE
