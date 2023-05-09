@@ -91,7 +91,7 @@ server <- function(input,output){
            , title = "Comorbidity of Mental Health Diagnoses"
            , subtitle = "ages 18-39"
            , caption = "Source: SAMHSA Mental Health Client Level Data, 2020") +
-      scale_fill_viridis(option = "magma", direction = -1)
+      scale_fill_viridis(option = "magma", direction = -1, labels = percent)
   })
 }
 

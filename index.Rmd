@@ -20,7 +20,11 @@ library(tidyverse)
 
 ```
 
-# Our Topic
+# Intro
+
+
+
+## Our Topic
 
 For this project, we chose to continue to explore mental health as we did in our Shiny app. However, while our Shiny app focused exclusively on students, we wanted to expand our target population to include all adults ages 18-39. Additionally, our previous project explored how demographic factors such as age, race, and education affected mental health diagnoses and outcomes; while we are still looking at diagnoses and outcomes here, we wanted to see how incorporating spatial data - specifically state-by-state breakdowns - might lead us to additional insights in these areas.  
 

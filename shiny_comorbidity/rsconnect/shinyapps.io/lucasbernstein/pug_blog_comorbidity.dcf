@@ -5,9 +5,9 @@ account: lucasbernstein
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 9022877
-bundleId: 7170875
+bundleId: 7195427
 url: https://lucasbernstein.shinyapps.io/pug_blog_comorbidity/
-when: 1683147442.45338
-lastSyncTime: 1683147442.45339
+when: 1683653138.9703
+lastSyncTime: 1683653138.97031
 asMultiple: FALSE
 asStatic: FALSE
