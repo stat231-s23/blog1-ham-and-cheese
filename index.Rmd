@@ -47,19 +47,20 @@ Our data comes from the Substance Abuse and Mental Health Services Administratio
 
 ## Mental Health Comorbidities by State
 
-To begin, we created [an interactive choropleth](https://lucasbernstein.shinyapps.io/pug_blog_comorbidity/) exploring how often clients who are diagnosed with one condition are also given additional diagnoses, broken down by US state.
+To begin, we created [an interactive choropleth](https://lucasbernstein.shinyapps.io/pug_blog_comorbidity/) exploring how often clients who are diagnosed with one condition are also given additional diagnoses, broken down by US state. (To recap: the term comorbidity, according to the NIH, “describes two or more disorders or illnesses occurring in the same person.”) For each diagnosis you can select, the comorbidity rate for each state is the percentage of people primarily diagnosed with the selected condition who were also given at least one additional diagnosis.
 
 ```{r comorbidities-app, out.width = "100%", out.extra = 'data-external="1" frameborder="no"', fig.cap = "[Mental Health Comorbidities Shiny App](https://lucasbernstein.shinyapps.io/pug_blog_comorbidity/)"}
 knitr::include_app("https://lucasbernstein.shinyapps.io/pug_blog_comorbidity/",
                    height = "500px")
 ```
 
-* Certain states have high comorbidity rates regardless of primary diagnosis (e.g. Minnesota, Washington, Virginia), often approaching 80%; however, these states often have low to average comorbidity rates when the primary diagnosis is delirium/dementia, substance use disorders, or developmental disorders.
-* Some disorders, like depressive, bipolar, and conduct, appear to have higher comorbidity rates nationwide
-* California has a low comorbidity rate across most primary diagnoses even compared to others with similar population. Arkansas' low comorbidity rate is at an even larger extreme (one of the lowest for every primary diagnosis).
-* No real patterns emerge regionally...but could we explore something else to help explain why certain states have higher or lower overall rates of comorbidity?
+Interestingly, no real geographic patterns emerged. For example, we thought that states in the Deep South might have lower comorbidity rates because of lower mental health funding and general stigma surrounding mental healthcare. However, we did have a few state-by-state observations:
 
-Additionally, we created a table (https://vchappell.shinyapps.io/ServicesTable/) observing the different health services used by participants which can be filtered by Gender, Employment Status, and Education level, broken down at a state level.
+* Certain states have higher than average comorbidity rates regardless of primary diagnosis (e.g. Minnesota, Washington, Virginia), often approaching 80%; however, these states often have low to average comorbidity rates when the primary diagnosis is delirium/dementia, substance use disorders, or developmental disorders.
+* Some disorders, like depressive, bipolar, and conduct, appear to have higher comorbidity rates nationwide. This could be due to the nature of the conditions themselves, or how people who are initially diagnosed with these conditions are further evaluated.
+* California has a low comorbidity rate across most primary diagnoses even compared to others with similar populations. Arkansas' low comorbidity rate is at an even larger extreme (one of the lowest for every primary diagnosis).
+
+Additionally, we created [a table](https://vchappell.shinyapps.io/ServicesTable/) observing the different health services used by participants which can be filtered by Gender, Employment Status, and Education level, broken down at a state level.
 
 To help understand this table, the different abbreviated services are as follows :
 

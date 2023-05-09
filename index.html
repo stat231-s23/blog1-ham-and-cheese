@@ -1035,7 +1035,12 @@ age range of 18-39.</p>
 <p>To begin, we created <a href="https://lucasbernstein.shinyapps.io/pug_blog_comorbidity/">an
 interactive choropleth</a> exploring how often clients who are diagnosed
 with one condition are also given additional diagnoses, broken down by
-US state.</p>
+US state. (To recap: the term comorbidity, according to the NIH,
+“describes two or more disorders or illnesses occurring in the same
+person.”) For each diagnosis you can select, the comorbidity rate for
+each state is the percentage of people primarily diagnosed with the
+selected condition who were also given at least one additional
+diagnosis.</p>
 <div class="figure">
 <iframe src="https://lucasbernstein.shinyapps.io/pug_blog_comorbidity/?showcase=0" width="100%" height="500px" data-external="1" data-external="1" frameborder="no">
 </iframe>
@@ -1044,26 +1049,30 @@ US state.</p>
 Health Comorbidities Shiny App</a>
 </p>
 </div>
+<p>Interestingly, no real geographic patterns emerged. For example, we
+thought that states in the Deep South might have lower comorbidity rates
+because of lower mental health funding and general stigma surrounding
+mental healthcare. However, we did have a few state-by-state
+observations:</p>
 <ul>
-<li>Certain states have high comorbidity rates regardless of primary
-diagnosis (e.g. Minnesota, Washington, Virginia), often approaching 80%;
-however, these states often have low to average comorbidity rates when
-the primary diagnosis is delirium/dementia, substance use disorders, or
-developmental disorders.</li>
+<li>Certain states have higher than average comorbidity rates regardless
+of primary diagnosis (e.g. Minnesota, Washington, Virginia), often
+approaching 80%; however, these states often have low to average
+comorbidity rates when the primary diagnosis is delirium/dementia,
+substance use disorders, or developmental disorders.</li>
 <li>Some disorders, like depressive, bipolar, and conduct, appear to
-have higher comorbidity rates nationwide</li>
+have higher comorbidity rates nationwide. This could be due to the
+nature of the conditions themselves, or how people who are initially
+diagnosed with these conditions are further evaluated.</li>
 <li>California has a low comorbidity rate across most primary diagnoses
-even compared to others with similar population. Arkansas’ low
+even compared to others with similar populations. Arkansas’ low
 comorbidity rate is at an even larger extreme (one of the lowest for
 every primary diagnosis).</li>
-<li>No real patterns emerge regionally…but could we explore something
-else to help explain why certain states have higher or lower overall
-rates of comorbidity?</li>
 </ul>
-<p>Additionally, we created a table (<a href="https://vchappell.shinyapps.io/ServicesTable/" class="uri">https://vchappell.shinyapps.io/ServicesTable/</a>) observing
-the different health services used by participants which can be filtered
-by Gender, Employment Status, and Education level, broken down at a
-state level.</p>
+<p>Additionally, we created <a href="https://vchappell.shinyapps.io/ServicesTable/">a table</a>
+observing the different health services used by participants which can
+be filtered by Gender, Employment Status, and Education level, broken
+down at a state level.</p>
 <p>To help understand this table, the different abbreviated services are
 as follows :</p>
 <ul>
