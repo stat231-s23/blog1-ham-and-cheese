@@ -1,7 +1,7 @@
 ---
 title: "A Geographic Exploration of Mental Healthcare"
 author: "Lucas Bernstein, Vera Chappell"
-date: "Add a date"
+date: "9 May 2023"
 output:
   rmdformats::material:
     highlight: "kate"
