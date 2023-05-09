@@ -54,7 +54,7 @@ knitr::include_app("https://lucasbernstein.shinyapps.io/pug_blog_comorbidity/",
                    height = "500px")
 ```
 
-Interestingly, no real geographic patterns emerged. For example, we thought that states in the Deep South might have lower comorbidity rates because of lower mental health funding and general stigma surrounding mental healthcare. However, we did have a few state-by-state observations:
+Interestingly, no real geographic patterns emerged. For example, we thought that states in the Deep South might have lower comorbidity rates because of lower mental health funding and general stigma surrounding mental healthcare, but with the exception of Alabama and Florida these states tended to be around the national average for each condition. However, we did have a few state-by-state observations:
 
 * Certain states have higher than average comorbidity rates regardless of primary diagnosis (e.g. Minnesota, Washington, Virginia), often approaching 80%; however, these states often have low to average comorbidity rates when the primary diagnosis is delirium/dementia, substance use disorders, or developmental disorders.
 * Some disorders, like depressive, bipolar, and conduct, appear to have higher comorbidity rates nationwide. This could be due to the nature of the conditions themselves, or how people who are initially diagnosed with these conditions are further evaluated.
