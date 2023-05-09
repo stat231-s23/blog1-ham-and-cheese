@@ -11,6 +11,8 @@ knitr::opts_chunk$set(
 
 # load packages
 library(tidyverse)
+library(dplyr)
+library(tidyr)
 ```
 
 ## R Markdown
@@ -18,45 +20,11 @@ library(tidyverse)
 
 
 ```{r}
-mhcld_tab_18_24 <- mhcld_puf_2020 %>%
+mhcld_tab_18_39 <- mhcld_puf_2020 %>%
   
-  filter(AGE > 3, AGE < 6, MH1 > 0) %>%
+  filter(AGE > 3, AGE < 9, MH1 > 0) %>%
   
-  select(SPHSERVICE, CMPSERVICE, OPISERVICE, RTCSERVICE, IJSSERVICE, EMPLOY, EDUC, GENDER) %>%
-  
-  mutate(GENDER = cut(GENDER, breaks = c(-10, .5, 1.5, 2.5),
-                         labels = c("Missing/no diagnosis", "Male", "Female"), include.lowest = TRUE),
-    
-    SPHSERVICE = cut(SPHSERVICE, breaks = c(.5, 1.5, 2.5),
-                         labels = c("Served in a state psychiatric hospital", "Not served in a state psychiatric hospital"), include.lowest = TRUE),
-    
-    CMPSERVICE = cut(CMPSERVICE, breaks = c(.5, 1.5, 2.5),
-                         labels = c("Served in a SMHA-funded/operated community-based program", "Not served in a SMHA-funded/operated community-based program"), include.lowest = TRUE),
-    
-    OPISERVICE = cut(OPISERVICE, breaks = c(.5, 1.5, 2.5),
-                         labels = c("Served in 'other psychiatric inpatient center", "Not served in 'other psychiatric inpatient center'"), include.lowest = TRUE),
-    
-    RTCSERVICE = cut(RTCSERVICE, breaks = c(.5, 1.5, 2.5),
-                         labels = c("Served in a residential treatment center", "Not served in a residential treatment center"), include.lowest = TRUE),
-    
-    IJSSERVICE = cut(IJSSERVICE, breaks = c(.5, 1.5, 2.5),
-                         labels = c("Served by an institution under the justice system", "Not served by any institution under the justice system"), include.lowest = TRUE),
-    
-    EMPLOY = cut(EMPLOY, breaks = c(-10, .5, 1.5, 2.5, 3.5, 4.5, 5.5),
-                         labels = c("Missing/no data", "Full-time", "Part-time", "Employed full-time/part-time not differentiated", "Unemployed", "Not in labor force"), include.lowest = TRUE),
-    
-    EDUC = cut(EDUC, breaks = c(-10, .5, 1.5, 2.5, 3.5, 4.5, 5.5),
-                         labels = c("Missing/no data", "Special education", "0 to 8", "9 to 11", "12 or GED", "More than 12"), include.lowest = TRUE))
-
-write_sav(mhcld_tab_18_24, "data/samhsa_services_18_24.sav")
-
-
-
-mhcld_tab_25_34 <- mhcld_puf_2020 %>%
-
-filter(AGE > 5, AGE < 8, MH1 > 0) %>%
-  
-  select(SPHSERVICE, CMPSERVICE, OPISERVICE, RTCSERVICE, IJSSERVICE, EMPLOY, EDUC, GENDER) %>%
+  select(SPHSERVICE, CMPSERVICE, OPISERVICE, RTCSERVICE, IJSSERVICE, EMPLOY, EDUC, GENDER, STATEFIP) %>%
   
   mutate(GENDER = cut(GENDER, breaks = c(-10, .5, 1.5, 2.5),
                          labels = c("Missing/no diagnosis", "Male", "Female"), include.lowest = TRUE),
@@ -80,9 +48,63 @@ filter(AGE > 5, AGE < 8, MH1 > 0) %>%
                          labels = c("Missing/no data", "Full-time", "Part-time", "Employed full-time/part-time not differentiated", "Unemployed", "Not in labor force"), include.lowest = TRUE),
     
     EDUC = cut(EDUC, breaks = c(-10, .5, 1.5, 2.5, 3.5, 4.5, 5.5),
-                         labels = c("Missing/no data", "Special education", "0 to 8", "9 to 11", "12 or GED", "More than 12"), include.lowest = TRUE))
+                         labels = c("Missing/no data", "Special education", "0 to 8", "9 to 11", "12 or GED", "More than 12"), include.lowest = TRUE),
+     STATE = recode(as.numeric(STATEFIP), `1` = "Alabama", 
+`2` = "Alaska", 
+`4` = "Arizona", 
+`5` = "Arkansas", 
+`6` = "California", 
+`8` = "Colorado", 
+`9` = "Connecticut", 
+`10` = "Delaware", 
+`11` = "District of Columbia", 
+`12` = "Florida", 
+`13` = "Georgia", 
+`15` = "Hawaii", 
+`16` = "Idaho", 
+`17` = "Illinois", 
+`18` = "Indiana", 
+`19` = "Iowa", 
+`20` = "Kansas", 
+`21` = "Kentucky", 
+`22` = "Louisiana", 
+`25` = "Massachusetts", 
+`26` = "Michigan", 
+`27` = "Minnesota", 
+`28` = "Mississippi", 
+`29` = "Missouri", 
+`30` = "Montana", 
+`31` = "Nebraska", 
+`32` = "Nevada", 
+`34` = "New Jersey", 
+`35` = "New Mexico", 
+`36` = "New York", 
+`37` = "North Carolina", 
+`38` = "North Dakota", 
+`39` = "Ohio", 
+`40` = "Oklahoma", 
+`41` = "Oregon", 
+`42` = "Pennsylvania", 
+`44` = "Rhode Island", 
+`45` = "South Carolina", 
+`46` = "South Dakota", 
+`47` = "Tennessee", 
+`48` = "Texas", 
+`49` = "Utah", 
+`50` = "Vermont", 
+`51` = "Virginia", 
+`53` = "Washington", 
+`55` = "Wisconsin", 
+`56` = "Wyoming", 
+`72` = "Puerto Rico")
+    )
 
-write_sav(mhcld_tab_25_39, "data/samhsa_services_25_34.sav")
+
+write_csv(mhcld_tab_18_39, "data/table_services_18_39.csv")
+
+
+
+```
 
 
 
