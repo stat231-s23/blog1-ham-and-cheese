@@ -12,6 +12,8 @@ library(tidyverse)
 library(dplyr)
 library(haven)
 library(DT)
+library(glue)
+library(gt)
 
 mhcld_tab_18_39 <- read_csv("table_services_18_39.csv")
 
@@ -54,8 +56,25 @@ server <- function(input, output) {
                 OPISERVICE_count = sum(OPISERVICE == "Served in 'other psychiatric inpatient center"),
                 RTCSERVICE_count = sum(RTCSERVICE == "Served in a residential treatment center"),
                 IJSSERVICE_count = sum(IJSSERVICE == "Served by an institution under the justice system")) %>%
-
-    
+      ungroup() %>%
+      rowwise() %>%
+      mutate(
+        total_count = sum(SPHSERVICE_count, CMPSERVICE_count, OPISERVICE_count, RTCSERVICE_count, IJSSERVICE_count),
+        SPHSERVICE_percent = round((SPHSERVICE_count / total_count) * 100, 2),
+        CMPSERVICE_percent = round((CMPSERVICE_count / total_count) * 100, 2),
+        OPISERVICE_percent = round((OPISERVICE_count / total_count) * 100, 2),
+        RTCSERVICE_percent = round((RTCSERVICE_count / total_count) * 100, 2),
+        IJSSERVICE_percent = round((IJSSERVICE_count / total_count) * 100, 2),
+        `State-psychiatric hospital` = glue("{SPHSERVICE_percent}% (n = {SPHSERVICE_count})"),
+        `SMHA-funded/operated community-based program` = glue("{CMPSERVICE_percent}% (n = {CMPSERVICE_count})"),
+        `Other psychiatric inpatient center` = glue("{OPISERVICE_percent}% (n = {OPISERVICE_count})"),
+        `Residential treatment center` = glue("{RTCSERVICE_percent}% (n = {RTCSERVICE_count})"),
+        `Institution under the justice system` = glue("{IJSSERVICE_percent}% (n = {IJSSERVICE_count})")) %>%
+      
+      select(STATE,`State-psychiatric hospital`, `SMHA-funded/operated community-based program`, `Other psychiatric inpatient center`, `Residential treatment center`, `Residential treatment center`) %>%
+      
+      
+     
       arrange(STATE)
     
   })
