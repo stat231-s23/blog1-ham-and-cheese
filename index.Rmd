@@ -20,7 +20,20 @@ library(tidyverse)
 
 ```
 
-# Our Topic
+# Intro
+
+On February 19, 2023, the U.S. Department of Education announced that they were awarding $188 million to increase access to mental health and wellness services at schools across the country. It’s a decision that comes at a time when mental health issues are more in the spotlight than ever – more than one in three high school students experienced poor mental health during the pandemic. Clearly, this is a national issue revealing itself at an alarming rate, which is why it is more crucial than ever to recognize what might be behind such a systemic problem and identify ways to resolve it.
+
+One possible factor we chose to explore is geographic location. Given that funding for mental health related issues [differs widely by state](https://rehabs.com/explore/mental-health-spending-by-state-across-the-us/), we were curious to explore how these differences in resource allocation might affect how mental healthcare patients are diagnosed and what type of treatment they are given.
+
+Another is the co-occurrence, or comorbidity, of multiple mental health or substance abuse disorders in one person. Not only are over 50% of people diagnosed with one psychiatric disorder [also diagnosed with another at some point in their lives](https://www.colorado.edu/today/2022/05/10/multiple-diagnoses-are-norm-mental-illness-new-genetic-study-explains-why), but those with co-occurring disorders are [often recommended different types of treatment](https://americanaddictioncenters.org/co-occurring-disorders), fundamentally changing their outcomes. For these reasons and more, understanding both the causes and effects of comorbid mental health diagnoses are crucial to fully interpreting the psychiatric situation in the United States.
+
+On the topic of treatment, another way in which mental healthcare patients’ experiences differ is in the services they have access to and receive. [Nearly a third of American adults don’t receive necessary mental health treatment](https://mhanational.org/issues/state-mental-health-america), which already raises possible connections to state-by-state funding and receiving multiple diagnoses. Additionally, while community-based mental health services are [on the rise worldwide](https://www.who.int/news-room/feature-stories/detail/community-based-mental-health-services-using-a-rights-based-approach), are they as effective as traditional inpatient or justice service-based treatments?
+
+By examining geography, comorbidity, and availability of services in an interconnected way, we hoped to answer these questions and provide some context to a clearly complex situation.
+
+
+## Our Topic
 
 For this project, we chose to continue to explore mental health as we did in our Shiny app. However, while our Shiny app focused exclusively on students, we wanted to expand our target population to include all adults ages 18-39. Additionally, our previous project explored how demographic factors such as age, race, and education affected mental health diagnoses and outcomes; while we are still looking at diagnoses and outcomes here, we wanted to see how incorporating spatial data - specifically state-by-state breakdowns - might lead us to additional insights in these areas.  
 
@@ -34,19 +47,20 @@ Our data comes from the Substance Abuse and Mental Health Services Administratio
 
 ## Mental Health Comorbidities by State
 
-To begin, we created [an interactive choropleth](https://lucasbernstein.shinyapps.io/pug_blog_comorbidity/) exploring how often clients who are diagnosed with one condition are also given additional diagnoses, broken down by US state.
+To begin, we created [an interactive choropleth](https://lucasbernstein.shinyapps.io/pug_blog_comorbidity/) exploring how often clients who are diagnosed with one condition are also given additional diagnoses, broken down by US state. (To recap: the term comorbidity, according to the NIH, “describes two or more disorders or illnesses occurring in the same person.”) For each diagnosis you can select, the comorbidity rate for each state is the percentage of people primarily diagnosed with the selected condition who were also given at least one additional diagnosis.
 
 ```{r comorbidities-app, out.width = "100%", out.extra = 'data-external="1" frameborder="no"', fig.cap = "[Mental Health Comorbidities Shiny App](https://lucasbernstein.shinyapps.io/pug_blog_comorbidity/)"}
 knitr::include_app("https://lucasbernstein.shinyapps.io/pug_blog_comorbidity/",
                    height = "500px")
 ```
 
-* Certain states have high comorbidity rates regardless of primary diagnosis (e.g. Minnesota, Washington, Virginia), often approaching 80%; however, these states often have low to average comorbidity rates when the primary diagnosis is delirium/dementia, substance use disorders, or developmental disorders.
-* Some disorders, like depressive, bipolar, and conduct, appear to have higher comorbidity rates nationwide
-* California has a low comorbidity rate across most primary diagnoses even compared to others with similar population. Arkansas' low comorbidity rate is at an even larger extreme (one of the lowest for every primary diagnosis).
-* No real patterns emerge regionally...but could we explore something else to help explain why certain states have higher or lower overall rates of comorbidity?
+Interestingly, no real geographic patterns emerged. For example, we thought that states in the Deep South might have lower comorbidity rates because of lower mental health funding and general stigma surrounding mental healthcare, but with the exception of Alabama and Florida these states tended to be around the national average for each condition. However, we did have a few state-by-state observations:
 
-Additionally, we created a table (https://vchappell.shinyapps.io/ServicesTable/) observing the different health services used by participants which can be filtered by Gender, Employment Status, and Education level, broken down at a state level.
+* Certain states have higher than average comorbidity rates regardless of primary diagnosis (e.g. Minnesota, Washington, Virginia), often approaching 80%; however, these states often have low to average comorbidity rates when the primary diagnosis is delirium/dementia, substance use disorders, or developmental disorders.
+* Some disorders, like depressive, bipolar, and conduct, appear to have higher comorbidity rates nationwide. This could be due to the nature of the conditions themselves, or how people who are initially diagnosed with these conditions are further evaluated.
+* California has a low comorbidity rate across most primary diagnoses even compared to others with similar populations. Arkansas' low comorbidity rate is at an even larger extreme (one of the lowest for every primary diagnosis).
+
+Additionally, we created [a table](https://vchappell.shinyapps.io/ServicesTable/) observing the different health services used by participants which can be filtered by Gender, Employment Status, and Education level, broken down at a state level.
 
 To help understand this table, the different abbreviated services are as follows :
 
