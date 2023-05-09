@@ -21,7 +21,7 @@ ui <- fluidPage(
     # Application title
   titlePanel("Mental Health Services Data By Gender, Employment, and/or Education"),
   
-  # Sidebar with a slider input for number of bins 
+  # Sidebar to choose how to filter data (One each for gender, employment, and education)
   sidebarLayout(
     sidebarPanel(
       selectInput("gender", "Gender:",
@@ -32,14 +32,14 @@ ui <- fluidPage(
                   c("All", "Missing/no data", "Full-time", "Part-time", "Employed full-time/part-time not differentiated", "Unemployed", "Not in labor force"), selected = "All"),
     ),
 
-    # Show a plot of the generated distribution
+    # Show table
     mainPanel(
       DT::dataTableOutput("sumTable")
     )
   )
 )
 
-# Define server logic required to draw a histogram
+# Define server logic required for table
 server <- function(input, output) {
   
 
@@ -54,6 +54,8 @@ server <- function(input, output) {
                 OPISERVICE_count = sum(OPISERVICE == "Served in 'other psychiatric inpatient center"),
                 RTCSERVICE_count = sum(RTCSERVICE == "Served in a residential treatment center"),
                 IJSSERVICE_count = sum(IJSSERVICE == "Served by an institution under the justice system")) %>%
+
+    
       arrange(STATE)
     
   })

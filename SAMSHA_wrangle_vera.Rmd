@@ -21,11 +21,11 @@ library(tidyr)
 
 ```{r}
 mhcld_tab_18_39 <- mhcld_puf_2020 %>%
-  
+  ##filter age to only cover 18-34, which is the same as Lucas's age range
   filter(AGE > 3, AGE < 9, MH1 > 0) %>%
-  
+  ##chose the variables covering which service each patient used, their employment and education status, gender, and state they are home to
   select(SPHSERVICE, CMPSERVICE, OPISERVICE, RTCSERVICE, IJSSERVICE, EMPLOY, EDUC, GENDER, STATEFIP) %>%
-  
+  ##rename each so that it can be understood contextually and is not numerical
   mutate(GENDER = cut(GENDER, breaks = c(-10, .5, 1.5, 2.5),
                          labels = c("Missing/no diagnosis", "Male", "Female"), include.lowest = TRUE),
     
@@ -99,7 +99,7 @@ mhcld_tab_18_39 <- mhcld_puf_2020 %>%
 `72` = "Puerto Rico")
     )
 
-
+##save a dataset for the app to utilize
 write_csv(mhcld_tab_18_39, "data/table_services_18_39.csv")
 
 
