@@ -82,7 +82,17 @@ The display of this data will eventually be reformatted to display a proportion 
 
 * In nearly all states, there is a higher sum of men seen in state-psychiatric hospitals, other psychiatric inpatient centers, and institutions under the justice system than women. 
 
+# Closing Remarks 
 
+Some things to consider with the data we have used are the method of collection and time of collection. Via the [codebook for the SAMHSA data](https://www.datafiles.samhsa.gov/sites/default/files/field-uploads-protected/studies/MH-CLD-2020/MH-CLD-2020-datasets/MH-CLD-2020-DS0001/MH-CLD-2020-DS0001-info/MH-CLD-2020-DS0001-info-codebook.pdf), “The scope of facilities from which the data is collected is affected by differences in state licensure, certification, accreditation, and disbursement of public funds.” Along with what has been noted via the codebook, there is no data from Maine, New Hampshire, West Virginia, and Maryland, and data from these states may or may not significantly change our findings or connections. 
+
+Furthermore, this data was collected in 2020, which is when the Covid-19 pandemic emerged. This may have altered the data in some way or not, but understanding the context within which data has been obtained is important to interpret the results.
+
+To conclude, our work provides a glean into the distribution of comorbidities and the distribution of health services within the U.S.; coupled with that, however, is also the acknowledgement that there are many factors that may be responsible for this distribution. 
+
+Factors such as state wide funding, federal funding, politics within each state, the mentality towards mental health, are just a few of the factors that contribute to the results we found within our project and data; however, we cannot hope to pinpoint the definitive causality of our results. What we can do is look further into each of these avenues and conduct more research and surveys to deeper contextualize this topic. 
+
+Something we can all do without a smidge of data science knowledge is to aid in reducing the stigma associated with mental health and receiving mental health care. The American Psychological Administration found results from the Harris Poll indicating that young adults, those aged 18-34 (which is a very similar age group to the one we conducted observations on) were less [likely than their older peers](https://www.apa.org/news/press/releases/2019/05/mental-health-survey#:~:text=A%20total%20of%2087%25%20of,better%2C%20according%20to%20the%20poll.) to agree that having a mental health disorder is nothing to be ashamed of.
 
 # References
 
@@ -90,11 +100,15 @@ American Addiction Centers (2022), "Co-Occurring Disorder Treatment Centers Near
 
 American Addiction Centers (2023), "Mental Health Spending By State Across the US," available at <https://rehabs.com/explore/mental-health-spending-by-state-across-the-us/>.
 
+American Psychological Association (2019), "Survey: Americans Becoming More Open About Mental Health," available at <https://www.apa.org/news/press/releases/2019/05/mental-health-survey#:~:text=A%20total%20of%2087%25%20of,better%2C%20according%20to%20the%20poll>.
+
 Marshall, Lisa (2022), "Multiple diagnoses are the norm with mental illness; new genetic study explains why," available at <https://www.colorado.edu/today/2022/05/10/multiple-diagnoses-are-norm-mental-illness-new-genetic-study-explains-why>.
 
 Mental Health America (2023), "The State Of Mental Health In America", available at <https://mhanational.org/issues/state-mental-health-america>.
 
 Substance Abuse and Mental Health Services Administration (November 2022), "2020 Mental Health Client-Level Data," available at <https://www.samhsa.gov/data/data-we-collect/mh-cld-mental-health-client-level-data>.
+
+Substance Abuse and Mental Health Services Administration (November 2022), "2020 Mental Health Client-Level Data Codebook," available at <https://www.datafiles.samhsa.gov/sites/default/files/field-uploads-protected/studies/MH-CLD-2020/MH-CLD-2020-datasets/MH-CLD-2020-DS0001/MH-CLD-2020-DS0001-info/MH-CLD-2020-DS0001-info-codebook.pdf>.
 
 U.S. Department of Education, "U.S. Department of Education Announces More Than $188 Million...," available at <https://www.ed.gov/news/press-releases/us-department-education-announces-more-188-million-bipartisan-safer-communities-act-support-mental-health-and-student-wellness>. 
  
