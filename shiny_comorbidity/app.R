@@ -22,10 +22,7 @@ us_map <- maps::map("state", plot = FALSE, fill = TRUE) %>%
 # define choice values and labels for user inputs #
 ###################################################
 # define vectors for choice values and labels 
-# can then refer to them in server as well (not just in defining widgets)
 
-# for radio button, can be separate 
-# (have choiceValues and choiceNames options, rather than just choices)
 cond_choice_values <- c(
   "Trauma- and stressor-related disorders", 
   "Anxiety disorders", 
@@ -41,9 +38,6 @@ cond_choice_values <- c(
   "Alcohol or substance use disorders",
   "Other disorders/conditions"
                         )
-
-
-# for selectizeInput choices for skateboard name, pull directly from data
 
 
 ############
@@ -75,20 +69,21 @@ ui <- navbarPage(
 ############
 server <- function(input,output){
   
-  # global variable, what type of plot interaction
-  
-  # observe for user interaction and change the global interaction_type
-  # variable
-  
-  # TAB 2: INTERACTIVE BARPLOT 
+  # create choropleth
   
   output$choropleth <- renderPlot({
+
+    # create state-by-state summary data
     samhsa_condition <- samhsa_comorbidity %>%
+      # filter out those without at least one diagnosis
       filter(MH1 == input$pt_cond) %>%
+      # group by state, create value for percentage w/ comorbid diagnoses within each group
       group_by(STATE) %>%
       summarize(count = n(), comorb_count = sum(MH2 != "Missing/no diagnosis"), comorb_percent = comorb_count / count) %>%
+      # add geometric data
       right_join(us_map, by = c("STATE" = "ID"))
     
+    # create plot with labels
     ggplot(samhsa_condition, aes(geometry=geom, fill = comorb_percent)) +
       geom_sf() +
       theme_void() +
