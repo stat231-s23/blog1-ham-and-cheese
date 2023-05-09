@@ -86,40 +86,17 @@ The display of this data will eventually be reformatted to display a proportion 
 
 # References
 
-All data sources, any key R packages, and any other sources used in developing your blog should be cited in full in a list of references at the end of your blog. Your blog post should also link to these sources as they are discussed. You may choose any reference style as long as sources are fully cited (try to be consistent!).
+American Addiction Centers (2022), "Co-Occurring Disorder Treatment Centers Near Me," available at <https://americanaddictioncenters.org/co-occurring-disorders>.
 
-Typically, references in R Markdown (and LaTeX) files are [incorporated with a BibTeX database](https://bookdown.org/yihui/rmarkdown-cookbook/bibliography.html) (a .bib file). You can try this approach or manually include either a numbered or alphabetized list. 
+American Addiction Centers (2023), "Mental Health Spending By State Across the US," available at <https://rehabs.com/explore/mental-health-spending-by-state-across-the-us/>.
 
-Columbia University has compiled some guidance on [how to cite data](https://guides.library.columbia.edu/datacitation). Some data sources will give you the citation information to copy and paste. Use the provided citations or citation styles in those cases.
+Marshall, Lisa (2022), "Multiple diagnoses are the norm with mental illness; new genetic study explains why," available at <https://www.colorado.edu/today/2022/05/10/multiple-diagnoses-are-norm-mental-illness-new-genetic-study-explains-why>.
 
-You can list R package citations with the code `citation("packageName")` in the console and then copy (and reformat as needed) the relevant text, e.g.,
-```{r}
-citation("DT")
-```
+Mental Health America (2023), "The State Of Mental Health In America", available at <https://mhanational.org/issues/state-mental-health-america>.
 
-The following citations are based on the American Statistical Association citation style (not all of these references are used in this document).:
+Substance Abuse and Mental Health Services Administration (November 2022), "2020 Mental Health Client-Level Data," available at <https://www.samhsa.gov/data/data-we-collect/mh-cld-mental-health-client-level-data>.
 
-
-<!-- Textbook -->
-Baumer, B. S., Kaplan, D. T., and Horton, N. J. (2021), *Modern Data Science with R* (2nd ed.), Boca Raton, FL: CRC Press.
-
-<!-- Journal article -->
-Broman, K. W. and Woo, K. H. (2018), "Data Organization in Spreadsheets," *The American Statistician*, 72:1, 2-10, doi: [10.1080/00031305.2017.1375989](https://doi.org/10.1080/00031305.2017.1375989)
-
-<!-- Website -->
-Columbia University Libraries (n.d.), "Data Citation," available at <https://guides.library.columbia.edu/datacitation>.
-
-<!-- Journal article -->
-McNamara, A. and Horton N. J. (2018) "Wrangling Categorical Data in R," *The American Statistician*, 72:1, 97-104, doi: [10.1080/00031305.2017.1356375](https://doi.org/10.1080/00031305.2017.1356375).
-
-<!-- Dataset -->
-Shah, Syed A. A. (October 2022), "Starbucks Drinks" (Version 1), *Kaggle*, available at <https://www.kaggle.com/datasets/syedasimalishah/starbucks-drinks>.
-
-<!-- R package -->
-Xie Y, Cheng J, Tan X (2022). "DT: A Wrapper of the JavaScript Library 'DataTables'," R package version 0.24, available at <https://CRAN.R-project.org/package=DT>.
-  
-
-
+U.S. Department of Education, "U.S. Department of Education Announces More Than $188 Million...," available at <https://www.ed.gov/news/press-releases/us-department-education-announces-more-188-million-bipartisan-safer-communities-act-support-mental-health-and-student-wellness>. 
  
-
+World Health Organization (2021), "Community-based mental health services using a rights-based approach", available at <https://www.who.int/news-room/feature-stories/detail/community-based-mental-health-services-using-a-rights-based-approach>.
 
