@@ -62,25 +62,25 @@ Interestingly, no real geographic patterns emerged. For example, we thought that
 
 Additionally, we created [a table](https://vchappell.shinyapps.io/ServicesTable/) observing the different health services used by participants which can be filtered by Gender, Employment Status, and Education level, broken down at a state level.
 
-To help understand this table, the different abbreviated services are as follows :
-
-- SPHSERVICE -> State-psychiatric hospital
-- CMPSERVICE -> SMHA-funded/operated community-based program
-- OPISERVICE -> Other psychiatric inpatient center
-- RTCSERVICE -> Residential treatment center
-- IJSSERVICE -> Institution under the justice system
 
 ```{r services-app, out.width = "100%", out.extra = 'data-external="1" frameborder="no"', fig.cap = "[Mental Health Services Shiny App](https://vchappell.shinyapps.io/ServicesTable/)"}
 knitr::include_app("https://vchappell.shinyapps.io/ServicesTable/",
                    height = "500px")
 ```
-The display of this data will eventually be reformatted to display a proportion of the whole such that results are more easily understood, but some preliminary results are:
 
-* For nearly every state, there is an inverse relationship between those served by residential treatment centers and institutions under the justice system (i.e., if more are served by an IJS, less are served by a RTC and vice-versa.)
+There are 5 services recorded by SAMHSA which show where each patient was treated : State-psychiatric hospitals, SMHA(State Mental Health Agencies)-funded/operated community based programs, Other psychiatric inpatient centers, Residential treatment centers, and Institutions under the justice system. 
 
-* Community-based program services are the most utilized services in each state compared to the other services documented.
+Our goal with this table was to begin to observe any potential links between the distribution of these services among the filters included or along state lines. To aid in making these links, the table can be sorted along each column, and has both total counts and a percentage to compare proportions among the services.
 
-* In nearly all states, there is a higher sum of men seen in state-psychiatric hospitals, other psychiatric inpatient centers, and institutions under the justice system than women. 
+Without filtering the data by gender/employment/education, there are already some observations that can be made. For all of the states, the most patients were seen under SMHA-funded/operated community based programs, with other psychiatric inpatient centers and state-psychiatric hospitals typically being the next biggest.
+
+Once filtering is introduced, there are many ways to look at this data and make observations from it. A few of these observations that we found are below.
+
+* For nearly every state, there is an inverse relationship between those served by residential treatment centers and institutions under the justice system (i.e., if more are served by an IJS, less are served by a RTC and vice-versa.) 
+
+* New York stands out for its distribution of patients seen under the justice system, with 34.18% seen. Comparatively, the next highest distribution of seen in Utah, with only 9.9%. We aren't exactly sure why this is the case, but one might look at New York's policies for committing those with mental health diagnoses.
+
+* In nearly all states, there is a higher sum of men seen in state-psychiatric hospitals, other psychiatric inpatient centers, and institutions under the justice system than women. This was interesting for us since research indicates that women are more vulnerable and/or treated more for mental health than men.
 
 # Closing Remarks 
 
@@ -88,11 +88,11 @@ Some things to consider with the data we have used are the method of collection 
 
 Furthermore, this data was collected in 2020, which is when the Covid-19 pandemic emerged. This may have altered the data in some way or not, but understanding the context within which data has been obtained is important to interpret the results.
 
-To conclude, our work provides a glean into the distribution of comorbidities and the distribution of health services within the U.S.; coupled with that, however, is also the acknowledgement that there are many factors that may be responsible for this distribution. 
+Overall, our work provides a glean into the distribution of comorbidities and the distribution of health services within the U.S.; coupled with that, however, is also the acknowledgement that there are many factors that may be responsible for this distribution. 
 
 Factors such as state wide funding, federal funding, politics within each state, the mentality towards mental health, are just a few of the factors that contribute to the results we found within our project and data; however, we cannot hope to pinpoint the definitive causality of our results. What we can do is look further into each of these avenues and conduct more research and surveys to deeper contextualize this topic. 
 
-Something we can all do without a smidge of data science knowledge is to aid in reducing the stigma associated with mental health and receiving mental health care. The American Psychological Administration found results from the Harris Poll indicating that young adults, those aged 18-34 (which is a very similar age group to the one we conducted observations on) were less [likely than their older peers](https://www.apa.org/news/press/releases/2019/05/mental-health-survey#:~:text=A%20total%20of%2087%25%20of,better%2C%20according%20to%20the%20poll.) to agree that having a mental health disorder is nothing to be ashamed of.
+Something we can all do without a smidge of data science knowledge is to aid in reducing the stigma associated with mental health and receiving mental health care. The American Psychological Administration found results from the Harris Poll indicating that young adults, those aged 18-34 (which is a very similar age group to the one we conducted observations on) were actually less [likely than their older peers](https://www.apa.org/news/press/releases/2019/05/mental-health-survey#:~:text=A%20total%20of%2087%25%20of,better%2C%20according%20to%20the%20poll.) to agree that having a mental health disorder is nothing to be ashamed of. 
 
 # References
 
